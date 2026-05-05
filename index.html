@@ -1,77 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Lotto Generator</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-        }
-        [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #f0f0f0;
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-            font-family: sans-serif;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        .theme-toggle {
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src='main.js' defer></script>
 </head>
 
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
-    <h1>Hello World</h1>
-    <table>
-        <tr>
-            <th>Firstname09876</th>
-            <th>Lastname</th>
-            <th>Age</th>
-        </tr>
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-        </tr>
-    </table>
-
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const currentTheme = body.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                body.removeAttribute('data-theme');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-            }
-        }
-    </script>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
+        
+        <div class="lotto-container">
+            <h2>Lotto Number Generator</h2>
+            <button class="generate-btn" onclick="generateLotto()">Generate 5 Sets</button>
+            <div id="lotto-results">
+                <!-- Lotto numbers will appear here -->
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
