@@ -11,6 +11,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4189687657593662" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src='mbti.js' defer></script>
     <script src='main.js' defer></script>
 </head>
 
@@ -64,13 +65,13 @@
 
             <!-- TOOL: MBTI Compatibility -->
             <div class="tool-section" style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 60px;">
-                <h2>MBTI 음식 궁합</h2>
-                <p style="margin-bottom: 20px;">당신의 성향과 어울리는 '소울 푸드'는 무엇일까요?</p>
+                <h2>🍱 MBTI 음식 궁합</h2>
+                <p style="margin-bottom: 20px;">MBTI를 입력하면 어울리는 음식을 랜덤 추천합니다.</p>
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                    <input type="text" id="mbti-input" placeholder="MBTI 4자리 입력 (예: ENFP)" style="padding: 12px; width: 250px; border-radius: 5px; border: 1px solid #ddd;">
-                    <button class="btn-primary" style="padding: 12px 30px; background: #34495e;" onclick="checkMBTI()">궁합 확인</button>
+                    <input type="text" id="mbtiInput" placeholder="예: ENFP" maxlength="4" style="padding: 12px; width: 250px; border-radius: 10px; border: 1px solid #ddd;">
+                    <button class="btn-primary" style="padding: 12px 30px; background: #ff7043;" onclick="recommendFood()">추천받기</button>
                 </div>
-                <div id="mbti-result"></div>
+                <div id="mbtiResult" class="result-card mbti-box"></div>
             </div>
 
             <div class="category-grid">

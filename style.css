@@ -109,6 +109,23 @@ nav ul li a:hover { color: var(--accent-gold); }
     font-size: 14px;
 }
 
+.result-card.mbti-box {
+    display: none;
+    margin-top: 25px;
+    padding: 25px;
+    background: #fff3e0;
+    border-radius: 15px;
+    line-height: 1.7;
+    border: none;
+}
+
+.food-highlight {
+    font-size: 32px;
+    font-weight: bold;
+    color: #e64a19;
+    margin: 15px 0;
+}
+
 /* Category Grid */
 .category-grid {
     max-width: 1200px;
