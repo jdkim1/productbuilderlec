@@ -80,7 +80,7 @@ const posts = [
         title: "전문직 여성을 위한 번아웃 예방 및 회복 전략",
         summary: "열정이 소진된 느낌이 든다면 이미 늦었을 수 있습니다. 멘탈 건강을 지키는 과학적 휴식법입니다.",
         readTime: "7분",
-        image: "/asset/image/main_3.jpg",
+        image: "asset/image/main_3.jpg",
         content: `
             <p>번아웃은 단순한 피로가 아닙니다. 뇌의 전두엽 기능이 저하되어 의사결정 능력이 떨어지는 상태입니다. 특히 높은 책임감을 가진 3040 전문직 여성에게서 흔히 발생합니다.</p>
             
