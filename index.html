@@ -6,12 +6,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>식사학 (Siksa-hak) | 당신의 한 끼에 가치를 더하는 음식 가이드</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name="description" content="단순한 메뉴 추천을 넘어 상황별 맞춤 음식의 효능과 영양 정보를 다루는 푸드 매거진. 결정 장애를 위한 음식 추천 서비스와 MBTI 궁합 제공.">
-    
-    <!-- SEO & AdSense -->
+    <meta name="description" content="단순한 메뉴 추천을 넘어 상황별 맞춤 음식의 효능과 영양 정보를 다루는 푸드 매거진.">
     <meta name="google-adsense-account" content="ca-pub-4189687657593662">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4189687657593662" crossorigin="anonymous"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <script src='main.js' defer></script>
@@ -20,13 +17,13 @@
 <body>
     <header>
         <div class="nav-container">
-            <a onclick="showPage('home')" class="logo" style="cursor:pointer;">食事學 [식사학]</a>
+            <a href="index.html" class="logo">食事學 [식사학]</a>
             <nav>
                 <ul>
-                    <li><a onclick="showPage('home')">Home</a></li>
-                    <li><a onclick="showPage('magazine')">테마별 추천</a></li>
-                    <li><a onclick="showPage('therapy')">푸드 테라피</a></li>
-                    <li><a onclick="showPage('about')">About Us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="thema.html">테마별 추천</a></li>
+                    <li><a href="therapy.html">푸드 테라피</a></li>
+                    <li><a href="about.html">About Us</a></li>
                 </ul>
             </nav>
             <button class="btn-primary" style="padding: 5px 15px; font-size: 12px;" onclick="toggleTheme()">Dark/Light</button>
@@ -34,38 +31,18 @@
     </header>
 
     <main>
-        <!-- HOME Section -->
-        <section id="home" class="page-section active">
+        <section id="home" class="active">
             <div class="hero">
                 <div class="hero-text">
                     <span style="color: var(--accent-gold); font-weight: 700; letter-spacing: 2px;">FOOD MAGAZINE</span>
                     <h1>왜 이 음식을<br>먹어야 하는가?</h1>
                     <p>우리는 당신의 소중한 한 끼가 단순한 배고픔 해결을 넘어, 몸과 마음을 치유하는 '학문'이 되길 바랍니다.</p>
-                    <button class="btn-primary" onclick="showPage('recommend')">결정 장애 해결사 시작 →</button>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80" alt="식사학 대표 이미지" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow);">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80" alt="식사학 대표 이미지" style="width: 100%; border-radius: 20px;">
                 </div>
             </div>
 
-            <div class="category-grid">
-                <div class="category-card" onclick="showPage('magazine')">
-                    <h3>테마별 추천</h3>
-                    <p>데이트, 해장, 혼밥 등 상황에 딱 맞는 맞춤 가이드를 확인하세요.</p>
-                </div>
-                <div class="category-card" onclick="showPage('therapy')">
-                    <h3>푸드 테라피</h3>
-                    <p>피로 회복과 다이어트, 집중력을 높여주는 과학적 식단 정보.</p>
-                </div>
-                <div class="category-card" onclick="showPage('ingredients')">
-                    <h3>식재료 이야기</h3>
-                    <p>제철 채소의 영양 성분과 올바른 보관법을 알려드립니다.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICE: Recommendation Engine -->
-        <section id="recommend" class="page-section">
             <div class="tool-section">
                 <h2>결정 장애 해결 서비스</h2>
                 <p style="margin-bottom: 30px;">오늘 당신의 상황에 가장 완벽한 메뉴를 데이터 기반으로 추천합니다.</p>
@@ -73,80 +50,25 @@
                 <div id="recommend-result"></div>
             </div>
 
-            <div class="tool-section" style="margin-top: 40px;">
-                <h2>MBTI 음식 궁합</h2>
-                <p>당신의 성향과 어울리는 '소울 푸드'를 매칭해 드립니다.</p>
-                <div style="margin: 20px 0;">
-                    <input type="text" id="mbti-input" placeholder="예: ENFP" style="padding: 12px; width: 200px; border-radius: 5px; border: 1px solid #ddd;">
-                    <button class="btn-primary" style="padding: 12px 25px;" onclick="checkMBTI()">결과 확인</button>
-                </div>
-                <div id="mbti-result"></div>
-            </div>
-        </section>
-
-        <!-- CATEGORY: Magazine Content -->
-        <section id="magazine" class="page-section">
-            <div class="tool-section" style="text-align: left;">
-                <h2>테마별 추천 가이드</h2>
-                <p>각 상황에 맞는 최적의 식사를 제안합니다.</p>
-                <div class="category-grid" style="margin-top: 30px;">
-                    <div class="category-card"><h4>🍷 데이트를 위한 미식</h4><p>분위기를 돋우는 가벼운 파스타와 와인 페어링.</p></div>
-                    <div class="category-card"><h4>🍲 숙취 해소의 과학</h4><p>알코올 분해를 돕는 아미노산 중심의 해장 메뉴.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="therapy" class="page-section">
-            <div class="tool-section" style="text-align: left;">
-                <h2>푸드 테라피</h2>
-                <p>음식으로 몸을 치유하고 컨디션을 조절하는 방법을 다룹니다.</p>
-                <ul style="margin-top: 20px; padding-left: 20px;">
-                    <li><strong>집중력 향상:</strong> 견과류와 블루베리를 활용한 브레인 푸드.</li>
-                    <li><strong>피로 회복:</strong> 비타민 B군이 풍부한 육류와 채소의 조합.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="ingredients" class="page-section">
-            <div class="tool-section" style="text-align: left;">
-                <h2>식재료 이야기</h2>
-                <p>우리가 매일 먹는 식재료의 숨겨진 가치를 탐구합니다.</p>
-            </div>
-        </section>
-
-        <!-- STATIC: Essential Pages -->
-        <section id="about" class="page-section">
-            <div class="tool-section" style="text-align: left;">
-                <h2>사이트 소개 (About Us)</h2>
-                <p><strong>식사학(食事學)</strong>은 바쁜 현대인들에게 '무엇을 먹을까'에 대한 질문을 넘어 '왜 이 음식을 먹어야 하는가'에 대한 해답을 제시하는 프리미엄 푸드 가이드입니다.</p>
-                <p>단순한 메뉴 추천을 넘어 음식의 영양, 유래, 효능 등을 전문적으로 다루어 사용자들의 건강한 식생활을 돕는 것을 목표로 합니다.</p>
-            </div>
-        </section>
-
-        <section id="privacy" class="page-section">
-            <div class="tool-section" style="text-align: left;">
-                <h2>개인정보처리방침 (Privacy Policy)</h2>
-                <p>본 사이트는 이용자의 개인정보를 소중히 여기며, 관련 법령을 준수합니다. 맞춤형 광고 및 서비스 개선을 위해 쿠키 정보를 활용할 수 있습니다.</p>
-            </div>
-        </section>
-
-        <section id="terms" class="page-section">
-            <div class="tool-section" style="text-align: left;">
-                <h2>이용약관 (Terms of Service)</h2>
-                <p>본 사이트의 콘텐츠는 정보 제공 목적으로만 작성되었으며, 전문적인 의료 조언을 대신할 수 없습니다.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="page-section">
-            <div class="tool-section" style="text-align: left;">
-                <h2>문의하기 (Contact Us)</h2>
-                <p>제휴 및 기타 문의 사항은 아래 양식을 통해 접수해 주세요.</p>
-                <form action="https://formspree.io/f/xaqvooae" method="POST" style="margin-top: 20px;">
-                    <input type="text" name="name" placeholder="이름" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd;">
-                    <input type="email" name="email" placeholder="이메일" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd;">
-                    <textarea name="message" placeholder="문의 내용" rows="5" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd;"></textarea>
-                    <button type="submit" class="btn-primary">문의 보내기</button>
-                </form>
+            <div class="category-grid">
+                <a href="thema.html" style="text-decoration: none; color: inherit;">
+                    <div class="category-card">
+                        <h3>테마별 추천</h3>
+                        <p>데이트, 해장, 혼밥 등 상황에 딱 맞는 맞춤 가이드를 확인하세요.</p>
+                    </div>
+                </a>
+                <a href="therapy.html" style="text-decoration: none; color: inherit;">
+                    <div class="category-card">
+                        <h3>푸드 테라피</h3>
+                        <p>피로 회복과 다이어트, 집중력을 높여주는 과학적 식단 정보.</p>
+                    </div>
+                </a>
+                <a href="about.html" style="text-decoration: none; color: inherit;">
+                    <div class="category-card">
+                        <h3>사이트 소개</h3>
+                        <p>식사학(食事學)이 지향하는 가치와 미션을 확인하세요.</p>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
@@ -158,10 +80,9 @@
                 <p style="font-size: 14px; opacity: 0.7;">당신의 삶을 바꾸는 한 끼의 미학</p>
             </div>
             <div class="footer-links">
-                <a onclick="showPage('about')">소개</a>
-                <a onclick="showPage('privacy')">개인정보처리방침</a>
-                <a onclick="showPage('terms')">이용약관</a>
-                <a onclick="showPage('contact')">문의하기</a>
+                <a href="about.html">소개</a>
+                <a href="thema.html">테마별 추천</a>
+                <a href="therapy.html">푸드 테라피</a>
             </div>
         </div>
         <p style="text-align: center; margin-top: 30px; opacity: 0.5; font-size: 12px;">&copy; 2026 Siksa-hak. All rights reserved.</p>
