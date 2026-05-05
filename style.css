@@ -1,23 +1,24 @@
+/* Luxury & Modern Theme for 3040 Professional Women */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #202124;
+    --bg-color: #fcfbf8; /* Soft Beige */
+    --text-color: #1a1a1a;
+    --primary-color: #0c1a3d; /* Deep Navy */
+    --accent-color: #c5a059; /* Gold/Bronze */
     --container-bg: #ffffff;
-    --container-border: #dadce0;
-    --accent-color: #1a73e8;
-    --hover-bg: #f8f9fa;
-    --shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-    --nav-bg: #ffffff;
+    --border-color: #e5e5e5;
+    --secondary-text: #555555;
+    --shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 [data-theme="dark"] {
-    --bg-color: #202124;
-    --text-color: #e8eaed;
-    --container-bg: #292a2d;
-    --container-border: #3c4043;
-    --accent-color: #8ab4f8;
-    --hover-bg: #3c4043;
-    --shadow: 0 1px 2px 0 rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
-    --nav-bg: #292a2d;
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #aecbfa;
+    --accent-color: #d4af37;
+    --container-bg: #1e1e1e;
+    --border-color: #333333;
+    --secondary-text: #aaaaaa;
+    --shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 * {
@@ -29,39 +30,46 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: background-color 0.2s, color 0.2s;
-    font-family: 'Google Sans', Roboto, Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    line-height: 1.8;
 }
 
-/* Header & Nav */
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif; /* Use system serif if not loaded */
+    font-weight: 700;
+}
+
+/* Header & Navigation */
 header {
-    width: 100%;
-    background-color: var(--nav-bg);
-    border-bottom: 1px solid var(--container-border);
-    padding: 10px 20px;
+    background-color: var(--container-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
     position: sticky;
     top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
+    z-index: 1000;
 }
 
 .nav-container {
-    width: 100%;
-    max-width: 800px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.logo {
+    font-size: 24px;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 30px;
 }
 
 nav ul li a {
@@ -69,6 +77,7 @@ nav ul li a {
     color: var(--text-color);
     font-size: 14px;
     font-weight: 500;
+    transition: color 0.2s;
     cursor: pointer;
 }
 
@@ -76,150 +85,238 @@ nav ul li a:hover {
     color: var(--accent-color);
 }
 
-.container {
+/* Hero Section */
+.hero {
     width: 100%;
-    max-width: 700px;
-    padding: 40px 20px;
+    padding: 100px 20px;
+    background: linear-gradient(rgba(12, 26, 61, 0.03), rgba(12, 26, 61, 0.01));
+    text-align: center;
 }
 
-.page-content {
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 18px;
+    color: var(--secondary-text);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Container */
+.main-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.page-section {
     display: none;
 }
 
-.page-content.active {
+.page-section.active {
     display: block;
 }
 
-/* Theme Switch */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Grid Layouts */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-.theme-switch {
-    display: inline-block;
-    height: 18px;
-    position: relative;
-    width: 36px;
-}
-
-.theme-switch input { display: none; }
-
-.slider {
-    background-color: #bdc1c6;
-    bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0;
-    transition: .2s; border-radius: 20px;
-}
-
-.slider:before {
-    background-color: #fff; bottom: 2px; content: ""; height: 14px; left: 2px;
-    position: absolute; transition: .2s; width: 14px; border-radius: 50%;
-}
-
-input:checked + .slider { background-color: var(--accent-color); }
-input:checked + .slider:before { transform: translateX(18px); }
-
-/* Components */
 .card {
     background-color: var(--container-bg);
-    border: 1px solid var(--container-border);
-    border-radius: 8px;
-    padding: 32px;
-    margin-bottom: 32px;
-    transition: box-shadow 0.3s ease;
-}
-
-.card:hover { box-shadow: var(--shadow); }
-
-h1, h2, h3 { margin-bottom: 20px; font-weight: 400; }
-p { line-height: 1.6; margin-bottom: 15px; font-size: 15px; }
-ul.info-list { margin-left: 20px; margin-bottom: 20px; }
-ul.info-list li { margin-bottom: 10px; line-height: 1.5; }
-
-.generate-btn {
-    padding: 12px 24px; font-size: 15px; font-weight: 500;
-    background-color: var(--accent-color); color: #fff;
-    border: none; border-radius: 4px; cursor: pointer;
-    width: 100%; margin-bottom: 24px;
-}
-.meal-row.clickable {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    margin-bottom: 12px;
-    background-color: var(--hover-bg);
-    border-radius: 8px;
-    border-left: 4px solid var(--accent-color);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.meal-row.clickable:hover {
-    transform: translateX(5px);
+    border-radius: 12px;
+    overflow: hidden;
     box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
 }
 
-.meal-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card-tag {
+    font-size: 12px;
+    color: var(--accent-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.card p {
+    font-size: 14px;
+    color: var(--secondary-text);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Post Styling */
+.post-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.post-header h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: var(--secondary-text);
+}
+
+.toc {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.toc h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.toc ul li {
+    margin-bottom: 5px;
+}
+
+.toc ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.post-body h2 {
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.post-body h3 {
+    margin: 30px 0 15px;
+}
+
+.post-body p {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
     text-align: left;
 }
 
-.meal-label {
-    font-size: 12px;
-    color: #5f6368;
-    font-weight: 500;
+th {
+    background-color: #f5f5f5;
+    font-weight: 600;
 }
 
-.meal-name {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--accent-color);
-}
-
-.meal-action {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.recipe-hint {
-    font-size: 12px;
-    background-color: var(--accent-color);
-    color: white;
-    padding: 2px 8px;
+.checklist {
+    background-color: rgba(197, 160, 89, 0.05);
+    padding: 25px;
     border-radius: 12px;
+    margin: 30px 0;
 }
 
-.view-detail {
-    font-size: 14px;
+.checklist h4 {
+    margin-bottom: 15px;
+}
+
+.checklist ul {
+    list-style: none;
+}
+
+.checklist li::before {
+    content: "✓";
     color: var(--accent-color);
     font-weight: bold;
+    margin-right: 10px;
 }
 
-/* Detail Page Styles */
-.detail-recipe-text {
-    line-height: 1.8 !important;
-    white-space: pre-wrap;
-}
-
-.generate-btn {
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
-.form-group input, .form-group textarea {
-    width: 100%; padding: 12px; border: 1px solid var(--container-border);
-    border-radius: 4px; background-color: var(--container-bg); color: var(--text-color);
-}
-
+/* Footer */
 footer {
-    width: 100%; padding: 40px 20px; border-top: 1px solid var(--container-border);
-    text-align: center; font-size: 13px; color: #5f6368;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 60px 20px;
+    margin-top: 100px;
+    text-align: center;
 }
 
-@media (max-width: 480px) {
-    .container { padding: 20px 15px; }
-    h1 { font-size: 24px; }
+.footer-nav {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.footer-nav a:hover {
+    color: #fff;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Theme Toggle */
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 30px; }
+    nav ul { display: none; } /* Could add hamburger menu later */
 }

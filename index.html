@@ -4,12 +4,18 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>오늘 뭐 먹지? - 하루 식사 추천 가이드</title>
+    <title>The Elite Wellness | 3040 여성을 위한 과학적 건강 루틴 가이드</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name="description" content="매일 반복되는 메뉴 고민은 이제 그만! 아침, 점심, 저녁부터 간식까지 최고의 식단 메뉴를 랜덤으로 추천해 드립니다.">
+    <meta name="description" content="성공적인 커리어와 건강한 라이프스타일을 지향하는 3040 전문직 여성을 위한 건강 정보 플랫폼입니다. 운동, 식단, 마음 챙김의 최적의 밸런스를 제안합니다.">
+    
+    <!-- Google AdSense Verification -->
     <meta name="google-adsense-account" content="ca-pub-4189687657593662">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4189687657593662"
         crossorigin="anonymous"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <script src='main.js' defer></script>
 </head>
@@ -17,127 +23,124 @@
 <body>
     <header>
         <div class="nav-container">
+            <a onclick="showPage('home')" class="logo">The Elite Wellness</a>
             <nav>
                 <ul>
-                    <li><a onclick="showPage('home')">홈</a></li>
-                    <li><a onclick="showPage('about')">소개</a></li>
-                    <li><a onclick="showPage('contact')">문의</a></li>
-                    <li><a onclick="showPage('privacy')">개인정보처리방침</a></li>
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('category', {category: 'Smart Workout'})">Smart Workout</a></li>
+                    <li><a onclick="showPage('category', {category: 'Balance Meal'})">Balance Meal</a></li>
+                    <li><a onclick="showPage('category', {category: 'Mind & Body'})">Mind & Body</a></li>
+                    <li><a onclick="showPage('about')">About</a></li>
                 </ul>
             </nav>
-            <div class="theme-switch-wrapper">
-                <span id="theme-label" style="font-size: 12px;">Light</span>
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" onchange="toggleTheme(this)" />
-                    <div class="slider"></div>
-                </label>
-            </div>
+            <button class="theme-toggle-btn" onclick="toggleTheme()">Mode</button>
         </div>
     </header>
 
-    <main class="container">
-        <!-- Home Page -->
-        <div id="home" class="page-content active">
-            <div class="card">
-                <h1>오늘의 식사 메뉴 추천</h1>
-                <p>버튼을 클릭하여 아침, 점심, 저녁, 간식 메뉴를 추천받으세요. 각 메뉴를 클릭하면 레시피와 맛집 지도를 확인할 수 있습니다.</p>
-                <button class="generate-btn" onclick="generateMeals()">오늘의 메뉴 추천받기</button>
-                <div id="meal-results">
-                    <!-- Results -->
-                </div>
+    <!-- Main Content Area -->
+    <main class="main-wrapper">
+        
+        <!-- Home Section -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <h1>Science-Based Health for<br>Professional Women</h1>
+                <p>3040 전문직 여성을 위한 체계적이고 과학적인 건강 루틴 가이드. 당신의 성과를 뒷받침하는 건강한 에너지를 발견하세요.</p>
             </div>
-
-            <!-- Ad Unit -->
-            <div class="ad-container" style="margin: 20px 0; text-align: center;">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4189687657593662"
-                    data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            
+            <h2 style="margin: 60px 0 30px; text-align: center;">Featured Posts</h2>
+            <div id="home-grid" class="grid">
+                <!-- Posts will be rendered here -->
             </div>
-        </div>
+        </section>
 
-        <!-- Detail Page -->
-        <div id="detail" class="page-content">
-            <div class="card">
-                <div class="detail-header">
-                    <button class="back-btn" onclick="showPage('home')">← 뒤로 가기</button>
-                    <h2 id="detail-name">메뉴 이름</h2>
-                </div>
-                
-                <img id="detail-image" src="" alt="메뉴 이미지" class="meal-img">
-                
-                <div class="detail-section">
-                    <h3>필요한 재료</h3>
-                    <p id="detail-ingredients"></p>
-                </div>
-                
-                <div class="detail-section">
-                    <h3>만드는 방법</h3>
-                    <p id="detail-recipe"></p>
-                </div>
-                
-                <div class="detail-section">
-                    <h3>영양 정보</h3>
-                    <p id="detail-calories"></p>
-                </div>
-                
-                <div class="detail-section">
-                    <h3>추천 맛집 및 상점</h3>
-                    <p style="margin-bottom: 15px; font-size: 14px;">주변에서 이 메뉴를 가장 잘하는 곳들을 지도에서 확인해보세요.</p>
-                    <div class="map-container">
-                        <iframe id="detail-map" src="" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
+        <!-- Category Section -->
+        <section id="category" class="page-section">
+            <h1 id="category-title" style="margin-bottom: 40px; text-align: center;">Category</h1>
+            <div id="category-grid" class="grid">
+                <!-- Posts will be rendered here -->
             </div>
-        </div>
+        </section>
 
-        <!-- About Page -->
-        <div id="about" class="page-content">
-            <div class="card">
-                <h2>서비스 소개</h2>
-                <p>"오늘 뭐 먹지?"는 매일 반복되는 식사 메뉴 고민을 해결해드리기 위해 탄생했습니다. 단순히 메뉴만 알려드리는 것이 아니라, 집에서 직접 해 드실 수 있는 레시피와 주변 맛집 정보까지 함께 제공합니다.</p>
-                <h3>고품질 식단 정보</h3>
-                <p>우리는 검증된 레시피와 신뢰할 수 있는 지도 데이터를 결합하여 사용자에게 최상의 식사 경험을 제안합니다.</p>
+        <!-- Post Detail Section -->
+        <section id="post" class="page-section">
+            <div id="post-container">
+                <!-- Single Post Content -->
             </div>
-        </div>
+        </section>
 
-        <!-- Contact Page -->
-        <div id="contact" class="page-content">
-            <div class="card">
-                <h2>문의 및 제안</h2>
-                <p>추가하고 싶은 메뉴나 서비스 개선에 대한 의견이 있으시면 언제든 알려주세요.</p>
-                <form action="https://formspree.io/f/xaqvooae" method="POST">
+        <!-- About Section -->
+        <section id="about" class="page-section">
+            <div class="card" style="padding: 50px;">
+                <h1>About The Elite Wellness</h1>
+                <p>반갑습니다. <strong>The Elite Wellness</strong>는 커리어와 삶의 균형을 소중히 여기는 3040 전문직 여성을 위해 설립된 프리미엄 건강 정보 플랫폼입니다.</p>
+                <p>우리는 단순히 유행하는 운동이나 식단을 나열하지 않습니다. 생체학적 근거와 최신 영양학 지식을 바탕으로, 바쁜 업무 환경 속에서도 효율적으로 건강을 관리할 수 있는 '최적화된 루틴'을 제안합니다.</p>
+                <h3 style="margin-top: 30px;">Our Mission</h3>
+                <p>전문 지식을 갖춘 여성들이 자신의 몸과 마음을 과학적으로 이해하고, 지속 가능한 웰니스를 실천함으로써 더 큰 사회적 성취를 이룰 수 있도록 돕는 것이 우리의 사명입니다.</p>
+            </div>
+        </section>
+
+        <!-- Privacy Policy Section -->
+        <section id="privacy" class="page-section">
+            <div class="card" style="padding: 50px;">
+                <h1>개인정보처리방침</h1>
+                <p>The Elite Wellness는 이용자의 개인정보를 소중히 다루며, 관련 법령을 준수합니다.</p>
+                <h2>1. 개인정보 수집 및 이용 목적</h2>
+                <p>사용자 문의 답변 및 서비스 개선을 위한 분석 용도로만 정보를 활용합니다.</p>
+                <h2>2. 제3자 제공</h2>
+                <p>법적 의무가 있는 경우를 제외하고 어떠한 경우에도 제3자에게 개인정보를 제공하지 않습니다.</p>
+                <h2>3. 쿠키 및 광고</h2>
+                <p>본 사이트는 구글 애드센스를 사용하며, 광고 게재를 위해 사용자의 브라우저 쿠키를 활용할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- Terms Section -->
+        <section id="terms" class="page-section">
+            <div class="card" style="padding: 50px;">
+                <h1>이용약관</h1>
+                <p>본 사이트에서 제공하는 모든 정보는 교육적 목적이며, 의료적 진단을 대신할 수 없습니다.</p>
+                <p>콘텐츠의 무단 전재 및 재배포를 금지합니다.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section">
+            <div class="card" style="padding: 50px;">
+                <h1>Contact Us</h1>
+                <p>문의사항이나 제휴 제안이 있으시면 아래 양식을 이용해 주세요.</p>
+                <form action="https://formspree.io/f/xaqvooae" method="POST" style="margin-top: 30px;">
                     <div class="form-group">
-                        <label for="name">성함</label>
-                        <input type="text" id="name" name="name" required>
+                        <label>Name</label>
+                        <input type="text" name="name" required style="width: 100%; padding: 12px; margin-top: 8px;">
                     </div>
-                    <div class="form-group">
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="_replyto" required>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label>Email</label>
+                        <input type="email" name="_replyto" required style="width: 100%; padding: 12px; margin-top: 8px;">
                     </div>
-                    <div class="form-group">
-                        <label for="message">의견 내용</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label>Message</label>
+                        <textarea name="message" rows="5" required style="width: 100%; padding: 12px; margin-top: 8px;"></textarea>
                     </div>
-                    <button type="submit" class="generate-btn">의견 보내기</button>
+                    <button class="generate-btn" style="margin-top: 30px; background-color: var(--primary-color);">Send Message</button>
                 </form>
             </div>
-        </div>
+        </section>
 
-        <!-- Privacy Page -->
-        <div id="privacy" class="page-content">
-            <div class="card">
-                <h2>개인정보처리방침</h2>
-                <p>본 사이트는 사용자의 개인정보 보호를 최우선으로 합니다.</p>
-                <ul class="info-list">
-                    <li><strong>데이터 수집:</strong> 문의 접수 시 성함과 이메일 주소만을 수집합니다.</li>
-                    <li><strong>로컬 스토리지:</strong> 테마 설정 및 이전 선택 정보를 위해 활용됩니다.</li>
-                </ul>
-            </div>
+        <!-- Ad Unit Placeholder (Always visible for AdSense bots) -->
+        <div class="ad-container" style="margin: 60px 0; text-align: center; border-top: 1px solid var(--border-color); padding-top: 40px;">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4189687657593662"
+                data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 오늘 뭐 먹지? - 하루 식사 추천 가이드. All rights reserved.</p>
+        <div class="footer-nav">
+            <a onclick="showPage('privacy')">Privacy Policy</a>
+            <a onclick="showPage('terms')">Terms of Service</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2026 The Elite Wellness. All Rights Reserved.</p>
+        <p style="font-size: 10px; color: #555; margin-top: 10px;">본 사이트는 과학적 근거를 바탕으로 한 건강 정보를 제공합니다.</p>
     </footer>
 </body>
 
