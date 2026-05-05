@@ -40,10 +40,10 @@
         <div id="home" class="page-content active">
             <div class="card">
                 <h1>오늘의 식사 메뉴 추천</h1>
-                <p>결정 장애로 고민하는 당신을 위한 완벽한 솔루션! 버튼 한 번으로 오늘 하루의 식단 계획을 세워보세요.</p>
+                <p>버튼을 클릭하여 아침, 점심, 저녁, 간식 메뉴를 추천받으세요. 각 메뉴를 클릭하면 레시피와 맛집 지도를 확인할 수 있습니다.</p>
                 <button class="generate-btn" onclick="generateMeals()">오늘의 메뉴 추천받기</button>
                 <div id="meal-results">
-                    <!-- Results will appear here -->
+                    <!-- Results -->
                 </div>
             </div>
 
@@ -53,16 +53,40 @@
                     data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
+        </div>
 
+        <!-- Detail Page -->
+        <div id="detail" class="page-content">
             <div class="card">
-                <h2>건강한 식습관을 위한 팁</h2>
-                <p>무엇을 먹느냐만큼 어떻게 먹느냐도 중요합니다. 즐거운 식사 시간을 위한 건강 정보를 확인하세요.</p>
-                <ul class="info-list">
-                    <li><strong>규칙적인 식사 시간:</strong> 우리 몸의 생체 리듬을 위해 아침, 점심, 저녁을 일정한 시간에 먹는 것이 좋습니다.</li>
-                    <li><strong>다양한 영양소 섭취:</strong> 탄수화물, 단백질, 지방뿐만 아니라 비타민과 무기질이 풍부한 채소를 곁들여 보세요.</li>
-                    <li><strong>충분한 수분 섭취:</strong> 식사 전후로 물을 충분히 마시는 것은 소화와 신진대사에 도움을 줍니다.</li>
-                </ul>
-                <p>본 서비스는 재미와 편의를 위해 메뉴를 무작위로 추천하며, 개인의 건강 상태와 알레르기를 고려하여 선택하시기 바랍니다.</p>
+                <div class="detail-header">
+                    <button class="back-btn" onclick="showPage('home')">← 뒤로 가기</button>
+                    <h2 id="detail-name">메뉴 이름</h2>
+                </div>
+                
+                <img id="detail-image" src="" alt="메뉴 이미지" class="meal-img">
+                
+                <div class="detail-section">
+                    <h3>필요한 재료</h3>
+                    <p id="detail-ingredients"></p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>만드는 방법</h3>
+                    <p id="detail-recipe"></p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>영양 정보</h3>
+                    <p id="detail-calories"></p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>추천 맛집 및 상점</h3>
+                    <p style="margin-bottom: 15px; font-size: 14px;">주변에서 이 메뉴를 가장 잘하는 곳들을 지도에서 확인해보세요.</p>
+                    <div class="map-container">
+                        <iframe id="detail-map" src="" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -70,9 +94,9 @@
         <div id="about" class="page-content">
             <div class="card">
                 <h2>서비스 소개</h2>
-                <p>"오늘 뭐 먹지?"는 매일 반복되는 식사 메뉴 고민을 해결해드리기 위해 탄생했습니다. 아침부터 밤 늦은 간식까지, 엄선된 100여 가지의 인기 메뉴 중 당신의 행운의 메뉴를 골라드립니다.</p>
-                <h3>서비스 목표</h3>
-                <p>단순한 랜덤 추천을 넘어, 사용자들에게 건강한 식단 아이디어를 제공하고 식사 시간의 즐거움을 되찾아드리는 것이 우리의 목표입니다.</p>
+                <p>"오늘 뭐 먹지?"는 매일 반복되는 식사 메뉴 고민을 해결해드리기 위해 탄생했습니다. 단순히 메뉴만 알려드리는 것이 아니라, 집에서 직접 해 드실 수 있는 레시피와 주변 맛집 정보까지 함께 제공합니다.</p>
+                <h3>고품질 식단 정보</h3>
+                <p>우리는 검증된 레시피와 신뢰할 수 있는 지도 데이터를 결합하여 사용자에게 최상의 식사 경험을 제안합니다.</p>
             </div>
         </div>
 
@@ -105,9 +129,8 @@
                 <h2>개인정보처리방침</h2>
                 <p>본 사이트는 사용자의 개인정보 보호를 최우선으로 합니다.</p>
                 <ul class="info-list">
-                    <li><strong>데이터 수집:</strong> 문의 접수 시 성함과 이메일 주소만을 수집하며, 다른 용도로 사용하지 않습니다.</li>
-                    <li><strong>로컬 스토리지:</strong> 다크모드 등 개인화된 UI 설정을 위해 브라우저의 로컬 스토리지를 활용합니다.</li>
-                    <li><strong>광고 운영:</strong> 구글 애드센스를 통해 광고를 게재하며, 서비스 유지를 위해 최소한의 광고만을 노출합니다.</li>
+                    <li><strong>데이터 수집:</strong> 문의 접수 시 성함과 이메일 주소만을 수집합니다.</li>
+                    <li><strong>로컬 스토리지:</strong> 테마 설정 및 이전 선택 정보를 위해 활용됩니다.</li>
                 </ul>
             </div>
         </div>
