@@ -6,7 +6,8 @@ const posts = [
         title: "오피스 레이디를 위한 5분 거북목 교정 루틴",
         summary: "컴퓨터 앞 업무가 많은 전문직 여성들을 위한 즉각적인 효과의 스트레칭 가이드입니다.",
         readTime: "4분",
-        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
+        //image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
+        image: "/asset/image/main_1.jpg",
         content: `
             <p>장시간 모니터를 응시하는 전문직 여성들에게 '거북목'은 피할 수 없는 숙명처럼 여겨지기도 합니다. 하지만 이는 단순히 외관상의 문제를 넘어 만성 두통과 어깨 통증의 주원인이 됩니다.</p>
             
@@ -56,7 +57,8 @@ const posts = [
         title: "업무 효율을 높이는 혈당 관리 식단 가이드",
         summary: "오후 시간의 급격한 피로(식곤증)는 혈당 스파이크 때문입니다. 에너지를 유지하는 식사법을 공개합니다.",
         readTime: "5분",
-        image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
+        //image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
+        image: "/asset/image/main_2.jpg",
         content: `
             <p>고도의 집중력이 필요한 전문직 여성에게 '오후 3시의 피로'는 치명적입니다. 이는 점심 식사 후 급격히 치솟았다 떨어지는 혈당 때문일 가능성이 큽니다.</p>
             
