@@ -6,7 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>식사학 (Siksa-hak) | 당신의 한 끼에 가치를 더하는 음식 가이드</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name="description" content="단순한 메뉴 추천을 넘어 상황별 맞춤 음식의 효능과 영양 정보를 다루는 푸드 매거진.">
+    <meta name="description" content="단순한 메뉴 추천을 넘어 상황별 맞춤 음식의 효능과 영양 정보를 다루는 푸드 매거진. 칼로리 계산기 및 MBTI 음식 추천 서비스 제공.">
     <meta name="google-adsense-account" content="ca-pub-4189687657593662">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4189687657593662" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -43,11 +43,34 @@
                 </div>
             </div>
 
+            <!-- TOOL: Decision Solver -->
             <div class="tool-section">
-                <h2>결정 장애 해결 서비스</h2>
-                <p style="margin-bottom: 30px;">오늘 당신의 상황에 가장 완벽한 메뉴를 데이터 기반으로 추천합니다.</p>
-                <button class="btn-primary" onclick="solveDecision()">지금 바로 메뉴 뽑기</button>
+                <h2>결정 장애 해결사</h2>
+                <p style="margin-bottom: 30px;">오늘 당신의 상황에 가장 완벽한 메뉴를 추천합니다.</p>
+                <button class="btn-primary" onclick="solveDecision()">결정 장애 해결! 버튼 클릭 →</button>
                 <div id="recommend-result"></div>
+            </div>
+
+            <!-- TOOL: Calorie Calculator -->
+            <div class="tool-section" style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 60px;">
+                <h2>한 끼 칼로리 계산기</h2>
+                <p style="margin-bottom: 20px;">궁금한 메뉴의 대략적인 칼로리를 확인해보세요.</p>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <input type="text" id="food-input" placeholder="예: 김치찌개, 삼겹살" style="padding: 12px; width: 250px; border-radius: 5px; border: 1px solid #ddd;">
+                    <button class="btn-primary" style="padding: 12px 30px; background: #e74c3c;" onclick="calculateCalorie()">칼로리 조회</button>
+                </div>
+                <div id="calorie-result"></div>
+            </div>
+
+            <!-- TOOL: MBTI Compatibility -->
+            <div class="tool-section" style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 60px;">
+                <h2>MBTI 음식 궁합</h2>
+                <p style="margin-bottom: 20px;">당신의 성향과 어울리는 '소울 푸드'는 무엇일까요?</p>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <input type="text" id="mbti-input" placeholder="MBTI 4자리 입력 (예: ENFP)" style="padding: 12px; width: 250px; border-radius: 5px; border: 1px solid #ddd;">
+                    <button class="btn-primary" style="padding: 12px 30px; background: #34495e;" onclick="checkMBTI()">궁합 확인</button>
+                </div>
+                <div id="mbti-result"></div>
             </div>
 
             <div class="category-grid">
@@ -81,8 +104,8 @@
             </div>
             <div class="footer-links">
                 <a href="about.html">소개</a>
+                <a href="index.html">홈으로</a>
                 <a href="thema.html">테마별 추천</a>
-                <a href="therapy.html">푸드 테라피</a>
             </div>
         </div>
         <p style="text-align: center; margin-top: 30px; opacity: 0.5; font-size: 12px;">&copy; 2026 Siksa-hak. All rights reserved.</p>

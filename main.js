@@ -18,6 +18,13 @@ const SITUATIONS = {
     ]
 };
 
+const CALORIE_DB = {
+    "김치찌개": 450, "된장찌개": 320, "비빔밥": 580, "불고기": 470, "삼겹살": 750,
+    "떡볶이": 350, "김밥": 400, "돈가스": 600, "짜장면": 700, "짬뽕": 750,
+    "치킨": 800, "피자": 900, "햄버거": 550, "파스타": 650, "샐러드": 200,
+    "샌드위치": 450, "라멘": 600, "쌀국수": 500, "초밥": 550, "회": 300
+};
+
 const MBTI_FOOD = {
     "INTJ": { food: "파인다이닝 코스", desc: "체계적이고 완벽한 논리 구조를 즐기는 당신에게 어울리는 고품격 미식" },
     "ENFP": { food: "멕시칸 퓨전 타코", desc: "창의적이고 새로운 시도를 좋아하는 당신의 열정과 닮은 맛" },
@@ -29,7 +36,7 @@ const MBTI_FOOD = {
     "ESTJ": { food: "스테이크", desc: "클래식하고 확실한 결과물을 선호하는 당신에게 어울리는 정석 미식" }
 };
 
-// --- Page Engine (Simplified for MPA) ---
+// --- Page Engine ---
 function toggleTheme() {
     const body = document.body;
     const isDark = body.getAttribute('data-theme') === 'dark';
@@ -44,8 +51,7 @@ function solveDecision() {
     if (hours < 11) timeKey = "breakfast";
     else if (hours > 17) timeKey = "dinner";
 
-    // Simulate weather check (In a real app, you'd use a weather API)
-    const isRainy = Math.random() > 0.7; // 30% chance for rainy recommendation
+    const isRainy = Math.random() > 0.7;
     const pool = isRainy ? SITUATIONS.weather_rainy : SITUATIONS[timeKey];
     const meal = pool[Math.floor(Math.random() * pool.length)];
 
@@ -61,6 +67,36 @@ function solveDecision() {
                 <div style="padding: 10px; background: rgba(231, 76, 60, 0.1); border-radius: 8px; color: #e74c3c; font-weight: 700; font-size: 14px;">
                     🔥 예상 칼로리: ${meal.calories} kcal
                 </div>
+            </div>
+        `;
+    }
+}
+
+// --- Tool: Calorie Calculator ---
+function calculateCalorie() {
+    const input = document.getElementById('food-input');
+    const resultArea = document.getElementById('calorie-result');
+    if (!input || !resultArea) return;
+
+    const foodName = input.value.trim();
+    if (!foodName) {
+        alert("음식 이름을 입력해주세요.");
+        return;
+    }
+
+    const calorie = CALORIE_DB[foodName];
+    if (calorie) {
+        resultArea.innerHTML = `
+            <div class="result-card" style="border-left: 4px solid #e74c3c; background: #fff;">
+                <h3 style="color: #333;">${foodName}</h3>
+                <p style="font-size: 18px; color: #e74c3c; font-weight: 700; margin-top: 5px;">대략 ${calorie} kcal (1인분 기준)</p>
+                <p style="font-size: 12px; color: #888; margin-top: 10px;">* 조리 방식과 재료에 따라 차이가 있을 수 있습니다.</p>
+            </div>
+        `;
+    } else {
+        resultArea.innerHTML = `
+            <div class="result-card" style="background: #fdf2f2;">
+                <p style="color: #c0392b;">죄송합니다. <strong>'${foodName}'</strong>에 대한 정보가 아직 없네요. <br>곧 업데이트하도록 하겠습니다!</p>
             </div>
         `;
     }
@@ -82,7 +118,7 @@ function checkMBTI() {
     
     if (resultArea) {
         resultArea.innerHTML = `
-            <div class="result-card" style="border-top: 4px solid #b08d57; animation: fadeInUp 0.5s ease-out;">
+            <div class="result-card gold" style="border-top: 4px solid #b08d57; background: #fff;">
                 <h3 style="color: #b08d57;">${mbti}의 소울푸드: ${result.food}</h3>
                 <p style="margin-top: 10px;">${result.desc}</p>
                 <button class="btn-primary" style="margin-top: 15px; padding: 8px 20px; font-size: 14px; background: #34495e;" onclick="shareResult('${mbti}', '${result.food}')">결과 공유하기</button>
