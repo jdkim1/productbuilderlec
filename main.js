@@ -18,22 +18,68 @@ const SITUATIONS = {
     ]
 };
 
-const CALORIE_DB = {
-    "김치찌개": 450, "된장찌개": 320, "비빔밥": 580, "불고기": 470, "삼겹살": 750,
-    "떡볶이": 350, "김밥": 400, "돈가스": 600, "짜장면": 700, "짬뽕": 750,
-    "치킨": 800, "피자": 900, "햄버거": 550, "파스타": 650, "샐러드": 200,
-    "샌드위치": 450, "라멘": 600, "쌀국수": 500, "초밥": 550, "회": 300
+const foodCalories = {
+    "김치찌개":250,"된장찌개":200,"순두부찌개":300,"부대찌개":600,"청국장":250,
+    "콩비지찌개":300,"비빔밥":550,"돌솥비빔밥":650,"불고기":450,"제육볶음":600,
+    "삼겹살":700,"목살구이":650,"갈비구이":650,"닭갈비":700,"닭볶음탕":700,
+    "치킨후라이드":800,"치킨양념":900,"간장치킨":850,"마늘치킨":850,
+    "백반":700,"정식":800,"칼국수":500,"잔치국수":400,"비빔국수":600,
+    "쫄면":700,"냉면":450,"라면":500,"짜장면":800,"짬뽕":700,
+    "볶음밥":700,"김치볶음밥":650,"새우볶음밥":700,"오므라이스":750,
+    "돈까스":900,"치즈돈까스":1000,"떡볶이":500,"로제떡볶이":700,
+    "순대":400,"순대국":600,"김밥":400,"참치김밥":500,"치즈김밥":550,
+    "불고기김밥":550,"잡채":300,"갈비탕":500,"설렁탕":450,"곰탕":400,
+    "육개장":450,"해장국":500,"선지해장국":500,"아구찜":600,"해물탕":500,
+    "매운탕":500,"파전":600,"김치전":550,"해물파전":700,"계란말이":300,
+    "계란찜":150,"불닭볶음면":550,"샤브샤브":600,"초밥":500,
+    "연어초밥":600,"참치초밥":550,"우동":450,"튀김우동":600,"돈부리":700,
+    "김치볶음":150,"멸치볶음":120,"콩나물무침":80,"시금치무침":90,
+    "도라지무침":100,"오이무침":70,"무생채":60,"장조림":200,
+    "두부조림":180,"감자조림":200,"연근조림":180,"고등어조림":400,
+    "갈치조림":450,"삼치구이":350,"고등어구이":400,"갈치구이":450,
+    "계란후라이":90,"계란스크램블":150,"떡국":500,"만두국":600,
+    "떡만두국":650,"콩국수":600,"막국수":550,"비빔막국수":600,
+    "수제비":500,"감자수제비":550,"칼제비":550,"카레라이스":700,
+    "하이라이스":750,"오징어볶음":400,"낙지볶음":500,"쭈꾸미볶음":450,
+    "닭곰탕":500,"삼계탕":800,"추어탕":500,"보쌈":600,"족발":800,
+    "편육":500,"토스트":300,"버터토스트":350,"프렌치토스트":400,
+    "샌드위치":350,"햄버거":600,"치즈버거":700,"불고기버거":650,
+    "감자튀김":400,"핫도그":450,"피자한조각":300,"치즈피자":800,
+    "페퍼로니피자":900,"고구마피자":850,"불고기피자":900,
+    "스파게티":700,"크림파스타":900,"토마토파스타":700,"로제파스타":850,
+    "리조또":800,"샐러드":150,"치킨샐러드":300,"시저샐러드":400,
+    "과일샐러드":200,"인절미":300,"송편":250,"절편":200,"꿀떡":220,
+    "약과":300,"한과":250,"붕어빵":250,"호떡":300,"초코케이크":400,
+    "치즈케이크":450,"생크림케이크":400,"마카롱":120,"쿠키":150,
+    "도넛":300,"아메리카노":10,"카페라떼":150,"바닐라라떼":250,
+    "카페모카":300,"카라멜마끼아또":300,"녹차라떼":250,"핫코코":300,
+    "밀크티":250,"버블티":400,"콜라":150,"사이다":150,"환타":160,
+    "이온음료":120,"에너지드링크":200,"소주":400,"맥주":500,
+    "막걸리":300,"와인":600,"사과":100,"바나나":120,"귤":80,
+    "오렌지":90,"포도":120,"수박":90,"참외":80,"딸기":50,
+    "복숭아":90,"배":120
 };
 
-const MBTI_FOOD = {
-    "INTJ": { food: "파인다이닝 코스", desc: "체계적이고 완벽한 논리 구조를 즐기는 당신에게 어울리는 고품격 미식" },
-    "ENFP": { food: "멕시칸 퓨전 타코", desc: "창의적이고 새로운 시도를 좋아하는 당신의 열정과 닮은 맛" },
-    "ISTP": { food: "평양냉면", desc: "자극적이지 않지만 깊은 본연의 맛에 집중하는 담백한 미식가" },
-    "ESFJ": { food: "한정식 상차림", desc: "함께 나누는 정과 조화로운 구성을 소중히 여기는 따뜻한 마음의 식사" },
-    "INTP": { food: "수제 버거", desc: "본질적인 맛의 조합을 분석하며 즐기는 지적인 미식가" },
-    "ENFJ": { food: "이탈리안 파스타", desc: "사람들과 어울려 따뜻한 분위기 속에서 즐기는 로맨틱한 식사" },
-    "ISFP": { food: "디저트 오마카세", desc: "감각적이고 섬세한 미각을 만족시키는 예술적인 달콤함" },
-    "ESTJ": { food: "스테이크", desc: "클래식하고 확실한 결과물을 선호하는 당신에게 어울리는 정석 미식" }
+const mbtiFoodMap = {
+    "ISTJ": ["백반", "된장찌개", "갈비탕", "김밥", "설렁탕"],
+    "ISFJ": ["김치찌개", "계란찜", "잡채", "떡국", "불고기"],
+    "INFJ": ["샐러드", "초밥", "카페라떼", "과일샐러드", "순두부찌개"],
+    "INTJ": ["아메리카노", "돈부리", "카레라이스", "고등어구이", "샤브샤브"],
+
+    "ISTP": ["라면", "햄버거", "돈까스", "감자튀김", "쫄면"],
+    "ISFP": ["마카롱", "붕어빵", "호떡", "치즈케이크", "딸기"],
+    "INFP": ["떡볶이", "로제떡볶이", "핫코코", "쿠키", "바닐라라떼"],
+    "INTP": ["짜장면", "짬뽕", "불닭볶음면", "피자한조각", "에너지드링크"],
+
+    "ESTP": ["삼겹살", "족발", "치킨양념", "부대찌개", "제육볶음"],
+    "ESFP": ["치킨후라이드", "치즈피자", "버블티", "도넛", "로제파스타"],
+    "ENFP": ["닭갈비", "떡볶이", "마늘치킨", "카라멜마끼아또", "고구마피자"],
+    "ENTP": ["매운탕", "아구찜", "불닭볶음면", "짬뽕", "쭈꾸미볶음"],
+
+    "ESTJ": ["정식", "갈비구이", "순대국", "육개장", "보쌈"],
+    "ESFJ": ["비빔밥", "김치전", "해물파전", "잔치국수", "불고기김밥"],
+    "ENFJ": ["돌솥비빔밥", "샤브샤브", "연어초밥", "치킨샐러드", "녹차라떼"],
+    "ENTJ": ["치즈돈까스", "크림파스타", "갈비구이", "삼계탕", "페퍼로니피자"]
 };
 
 // --- Page Engine ---
@@ -84,7 +130,7 @@ function calculateCalorie() {
         return;
     }
 
-    const calorie = CALORIE_DB[foodName];
+    const calorie = foodCalories[foodName];
     if (calorie) {
         resultArea.innerHTML = `
             <div class="result-card" style="border-left: 4px solid #e74c3c; background: #fff;">
@@ -102,33 +148,31 @@ function calculateCalorie() {
     }
 }
 
-// --- Tool: MBTI Compatibility ---
-function checkMBTI() {
-    const input = document.getElementById('mbti-input');
-    if (!input) return;
-    const mbti = input.value.toUpperCase();
-    
-    if (mbti.length !== 4) {
-        alert("MBTI 4자리를 정확히 입력해주세요.");
+// --- Tool: MBTI Food Compatibility ---
+function recommendFood() {
+    const input = document.getElementById("mbti-input");
+    const resultArea = document.getElementById("mbti-result");
+    if (!input || !resultArea) return;
+
+    const mbti = input.value.toUpperCase().trim();
+    if (!mbtiFoodMap[mbti]) {
+        alert("올바른 MBTI를 입력해주세요. 예: ENFP, ISTJ");
         return;
     }
 
-    const result = MBTI_FOOD[mbti] || { food: "비빔밥", desc: "모든 성향이 조화롭게 어우러지는 완벽한 밸런스의 맛" };
-    const resultArea = document.getElementById('mbti-result');
-    
-    if (resultArea) {
-        resultArea.innerHTML = `
-            <div class="result-card gold" style="border-top: 4px solid #b08d57; background: #fff;">
-                <h3 style="color: #b08d57;">${mbti}의 소울푸드: ${result.food}</h3>
-                <p style="margin-top: 10px;">${result.desc}</p>
-                <button class="btn-primary" style="margin-top: 15px; padding: 8px 20px; font-size: 14px; background: #34495e;" onclick="shareResult('${mbti}', '${result.food}')">결과 공유하기</button>
-            </div>
-        `;
-    }
-}
+    const foods = mbtiFoodMap[mbti];
+    const randomFood = foods[Math.floor(Math.random() * foods.length)];
+    const calories = foodCalories[randomFood] || 500;
 
-function shareResult(mbti, food) {
-    alert(`${mbti}의 소울푸드 [${food}] 결과를 복사했습니다! (데모 기능)`);
+    resultArea.innerHTML = `
+        <div class="result-card gold" style="border-top: 4px solid #ff5722; background: #fff; animation: fadeInUp 0.5s ease-out;">
+            <p style="font-size: 14px; color: #666;">당신의 MBTI는 <strong>${mbti}</strong></p>
+            <p style="margin: 10px 0;">오늘의 궁합 음식은</p>
+            <h3 style="font-size: 28px; color: #ff5722; margin-bottom: 10px;">🍽️ ${randomFood}</h3>
+            <div class="calorie-tag" style="background: #ff7043;">${calories} kcal</div>
+            <p style="margin-top: 20px; font-size: 13px; color: #888;">이 결과를 친구들과 공유해보세요!</p>
+        </div>
+    `;
 }
 
 // --- Initialization ---
