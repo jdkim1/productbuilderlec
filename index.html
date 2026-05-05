@@ -12,7 +12,13 @@
 
 <body>
     <div class="container">
-        <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
+        <div class="theme-switch-wrapper">
+            <span id="theme-label">Light Mode</span>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" onchange="toggleTheme(this)" />
+                <div class="slider round"></div>
+            </label>
+        </div>
         
         <div class="lotto-container">
             <h2>Lotto Number Generator</h2>
