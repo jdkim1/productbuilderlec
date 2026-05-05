@@ -4,13 +4,15 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>The Elite Wellness | 3040 전문직 여성을 위한 건강 정보</title>
+    <title>식사학 (Siksa-hak) | 당신의 한 끼에 가치를 더하는 음식 가이드</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name="description" content="3040 전문직 여성을 위한 과학적 기반의 웰니스 블로그. 오피스 스트레칭, 혈당 식단, 번아웃 관리 등 성과를 높이는 건강 루틴을 제안합니다.">
+    <meta name="description" content="단순한 메뉴 추천을 넘어 상황별 맞춤 음식의 효능과 영양 정보를 다루는 푸드 매거진. 결정 장애를 위한 음식 추천 서비스와 MBTI 궁합 제공.">
+    
+    <!-- SEO & AdSense -->
     <meta name="google-adsense-account" content="ca-pub-4189687657593662">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4189687657593662"
-        crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4189687657593662" crossorigin="anonymous"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <script src='main.js' defer></script>
 </head>
@@ -18,98 +20,101 @@
 <body>
     <header>
         <div class="nav-container">
-            <a onclick="showPage('home')" class="logo">The Elite Wellness</a>
+            <a onclick="showPage('home')" class="logo">食事學 [식사학]</a>
             <nav>
                 <ul>
                     <li><a onclick="showPage('home')">Home</a></li>
-                    <li><a onclick="showPage('category', {category: 'Smart Workout'})">Smart Workout</a></li>
-                    <li><a onclick="showPage('category', {category: 'Balance Meal'})">Balance Meal</a></li>
-                    <li><a onclick="showPage('category', {category: 'Mind & Body'})">Mind & Body</a></li>
+                    <li><a onclick="showPage('magazine')">테마별 추천</a></li>
+                    <li><a onclick="showPage('therapy')">푸드 테라피</a></li>
                     <li><a onclick="showPage('about')">About</a></li>
                 </ul>
             </nav>
-            <button class="theme-toggle-btn" onclick="toggleTheme()">Mode</button>
+            <button class="btn-primary" style="padding: 5px 15px; font-size: 12px;" onclick="toggleTheme()">Dark/Light</button>
         </div>
     </header>
 
-    <main class="main-wrapper">
-        <!-- Home Section -->
+    <main>
+        <!-- HOME: Magazine Main -->
         <section id="home" class="page-section active">
             <div class="hero">
-                <h1>Optimal Health for High Achievers</h1>
-                <p>전문직 여성의 지속 가능한 성취를 위한 과학적 건강 가이드. 당신의 에너지를 디자인하세요.</p>
+                <div class="hero-text">
+                    <span style="color: var(--accent-gold); font-weight: 700; letter-spacing: 2px;">FOOD MAGAZINE</span>
+                    <h1>왜 이 음식을<br>먹어야 하는가?</h1>
+                    <p>우리는 당신의 소중한 한 끼가 단순한 배고픔 해결을 넘어, 몸과 마음을 치유하는 '학문'이 되길 바랍니다.</p>
+                    <button class="btn-primary" onclick="showPage('recommend')">결정 장애 해결사 시작 →</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80" alt="식사학 대표 이미지" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow);">
+                </div>
             </div>
-            <h2 style="margin: 60px 0 30px; text-align: center;">Latest Insights</h2>
-            <div id="home-grid" class="grid"></div>
+
+            <div class="category-grid">
+                <div class="category-card" onclick="showPage('magazine')">
+                    <h3>테마별 추천</h3>
+                    <p>데이트, 해장, 혼밥 등 상황에 딱 맞는 맞춤 가이드를 확인하세요.</p>
+                </div>
+                <div class="category-card" onclick="showPage('therapy')">
+                    <h3>푸드 테라피</h3>
+                    <p>피로 회복과 다이어트, 집중력을 높여주는 과학적 식단 정보.</p>
+                </div>
+                <div class="category-card" onclick="showPage('ingredients')">
+                    <h3>식재료 이야기</h3>
+                    <p>제철 채소의 영양 성분과 올바른 보관법을 알려드립니다.</p>
+                </div>
+            </div>
         </section>
 
-        <!-- Category Section -->
-        <section id="category" class="page-section">
-            <h1 id="category-title" style="margin-bottom: 40px; text-align: center;">Category</h1>
-            <div id="category-grid" class="grid"></div>
+        <!-- SERVICE: Interactive Recommendation -->
+        <section id="recommend" class="page-section">
+            <div class="tool-section">
+                <h2>결정 장애 해결 서비스</h2>
+                <p style="margin-bottom: 30px;">오늘 당신의 상황에 가장 완벽한 메뉴를 데이터 기반으로 추천합니다.</p>
+                <button class="btn-primary" onclick="solveDecision()">지금 바로 메뉴 뽑기</button>
+                <div id="recommend-result"></div>
+            </div>
+
+            <div class="tool-section" style="margin-top: 60px;">
+                <h2>MBTI 음식 궁합</h2>
+                <p>당신의 성향과 어울리는 '소울 푸드'는 무엇일까요?</p>
+                <div style="margin: 20px 0;">
+                    <input type="text" id="mbti-input" placeholder="MBTI 4자리를 입력 (예: ENFP)" style="padding: 12px; width: 250px; border-radius: 5px; border: 1px solid #ddd;">
+                    <button class="btn-primary" style="padding: 12px 30px;" onclick="checkMBTI()">결과 확인</button>
+                </div>
+                <div id="mbti-result"></div>
+            </div>
         </section>
 
-        <!-- Post Section -->
-        <section id="post" class="page-section">
-            <div id="post-container"></div>
-        </section>
-
-        <!-- About Section -->
+        <!-- STATIC: About & Compliance -->
         <section id="about" class="page-section">
-            <div class="card" style="padding: 50px;">
-                <h1>About Us & Our Mission</h1>
-                <p><strong>The Elite Wellness</strong>는 커리어의 정점에 서 있는 3040 전문직 여성들이 신체적, 정신적 한계를 극복하고 더 높은 성취를 이룰 수 있도록 돕는 웰니스 플랫폼입니다.</p>
-                <p>본 블로그의 콘텐츠는 영양학 및 운동 생리학적 근거를 바탕으로 작성되며, 바쁜 비즈니스 환경에서도 실천 가능한 '최소 시간 최대 효과'의 루틴을 지향합니다.</p>
-                <h3 style="margin-top: 30px;">편집장 소개</h3>
-                <p>건강 관리 전문가와 콘텐츠 에디터들이 협력하여 정보를 검증하고 발행합니다. 우리는 당신의 건강이 가장 강력한 자산임을 믿습니다.</p>
+            <div class="tool-section" style="text-align: left;">
+                <h2>식사학(食事學) 소개</h2>
+                <p><strong>식사학</strong>은 바쁜 현대인들에게 '무엇을 먹을까'에 대한 질문을 넘어 '어떻게 영양을 채울까'에 대한 해답을 제시하는 프리미엄 푸드 매거진입니다.</p>
+                <p>전문 에디터들이 검증한 데이터와 상황별 시나리오를 결합하여 사용자에게 최적의 미식 경험을 제안합니다.</p>
             </div>
         </section>
 
-        <!-- Privacy Policy -->
         <section id="privacy" class="page-section">
-            <div class="card" style="padding: 50px;">
-                <h1>개인정보처리방침 (Privacy Policy)</h1>
-                <p>The Elite Wellness는 이용자의 개인정보를 중요시하며, '개인정보보호법' 및 'GDPR', 'CCPA' 등 국제 개인정보 보호 가이드라인을 준수하고자 노력합니다.</p>
-                <h3>1. 개인정보 수집 항목 및 목적</h3>
-                <p>본 사이트는 별도의 회원가입 없이 이용 가능하나, 문의하기(Contact) 기능을 통해 제공받는 이름과 이메일 주소는 오직 문의 응대 목적으로만 사용됩니다.</p>
-                <h3>2. 쿠키(Cookie) 및 타사 광고 (Google AdSense)</h3>
-                <p>본 사이트는 타사 업체(Google)를 통해 광고를 게재합니다. Google을 포함한 타사 업체는 쿠키를 사용하여 사용자의 이전 방문 기록을 바탕으로 광고를 게재합니다. Google의 광고 쿠키를 사용함으로써 Google 및 파트너는 사용자의 본 사이트 및 다른 사이트 방문 기록을 토대로 맞춤형 광고를 제공할 수 있습니다.</p>
-                <p>사용자는 <a href="https://www.google.com/settings/ads" target="_blank">Google 광고 설정</a>을 방문하여 맞춤형 광고 게재를 중단할 수 있습니다.</p>
-                <h3>3. 데이터 보존 기간</h3>
-                <p>수집된 문의 내역은 목적 달성 후 지체 없이 파기됩니다.</p>
-            </div>
-        </section>
-
-        <!-- Terms of Service -->
-        <section id="terms" class="page-section">
-            <div class="card" style="padding: 50px;">
-                <h1>이용약관</h1>
-                <p>The Elite Wellness의 모든 콘텐츠는 저작권법의 보호를 받습니다. 무단 전재 및 재배포를 금지하며, 본 사이트의 정보는 의료적 조언을 대신할 수 없습니다.</p>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="page-section">
-            <div class="card" style="padding: 50px;">
-                <h1>Contact Us</h1>
-                <p>제휴 및 기타 문의 사항은 아래 양식을 작성해 주세요.</p>
-                <form action="https://formspree.io/f/xaqvooae" method="POST" style="margin-top: 30px;">
-                    <div class="form-group"><label>이름</label><input type="text" name="name" required style="width:100%; padding:12px; border:1px solid #ddd; margin-top:8px;"></div>
-                    <div class="form-group" style="margin-top:20px;"><label>이메일</label><input type="email" name="_replyto" required style="width:100%; padding:12px; border:1px solid #ddd; margin-top:8px;"></div>
-                    <div class="form-group" style="margin-top:20px;"><label>메시지</label><textarea name="message" rows="5" required style="width:100%; padding:12px; border:1px solid #ddd; margin-top:8px;"></textarea></div>
-                    <button class="generate-btn" style="margin-top:30px; background-color:var(--primary-color);">메시지 보내기</button>
-                </form>
+            <div class="tool-section" style="text-align: left;">
+                <h2>개인정보처리방침</h2>
+                <p>본 사이트는 이용자의 익명성을 보장하며, 서비스 개선을 위한 쿠키 정보만을 활용합니다. 수집된 모든 정보는 '개인정보보호법'에 따라 철저히 관리됩니다.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-nav">
-            <a onclick="showPage('privacy')">Privacy Policy</a>
-            <a onclick="showPage('terms')">Terms of Service</a>
-            <a onclick="showPage('contact')">Contact</a>
+        <div class="footer-content">
+            <div>
+                <h2 style="color: white; margin-bottom: 20px;">食事學</h2>
+                <p style="font-size: 14px; opacity: 0.7;">당신의 삶을 바꾸는 한 끼의 미학</p>
+            </div>
+            <div class="footer-links">
+                <a onclick="showPage('about')">소개</a>
+                <a onclick="showPage('privacy')">개인정보처리방침</a>
+                <a onclick="showPage('terms')">이용약관</a>
+                <a onclick="showPage('contact')">문의하기</a>
+            </div>
         </div>
-        <p class="copyright">&copy; 2026 The Elite Wellness. All Rights Reserved.</p>
+        <p style="text-align: center; margin-top: 40px; opacity: 0.5; font-size: 12px;">&copy; 2026 Siksa-hak. All rights reserved.</p>
     </footer>
 </body>
 

@@ -1,141 +1,42 @@
-const posts = [
-    {
-        id: "posture-correction",
-        category: "Smart Workout",
-        tag: "스마트 워크아웃",
-        title: "오피스 레이디를 위한 5분 거북목 교정 루틴",
-        summary: "컴퓨터 앞 업무가 많은 전문직 여성들을 위한 즉각적인 효과의 스트레칭 가이드입니다.",
-        readTime: "4분",
-        //image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
-        image: "/asset/image/main_1.jpg",
-        content: `
-            <p>장시간 모니터를 응시하는 전문직 여성들에게 '거북목'은 피할 수 없는 숙명처럼 여겨지기도 합니다. 하지만 이는 단순히 외관상의 문제를 넘어 만성 두통과 어깨 통증의 주원인이 됩니다.</p>
-            
-            <div class="toc">
-                <h4>목차</h4>
-                <ul>
-                    <li><a href="#section1">1. 거북목이 건강에 미치는 영향</a></li>
-                    <li><a href="#section2">2. 오피스 스트레칭 3단계</a></li>
-                    <li><a href="#section3">3. 생활 속 바른 자세 체크리스트</a></li>
-                </ul>
-            </div>
-
-            <h2 id="section1">1. 거북목이 건강에 미치는 영향</h2>
-            <p>머리의 무게는 평균 5kg 정도지만, 고개가 앞으로 15도 숙여질 때마다 목에 가해지는 하중은 12kg씩 증가합니다. 이는 경추 디스크의 위험을 높일 뿐만 아니라 호흡 효율을 떨어뜨려 집중력 저하의 원인이 됩니다.</p>
-            
-            <table>
-                <thead>
-                    <tr><th>구분</th><th>정상 자세</th><th>거북목 자세</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>목 하중</td><td>4~5kg</td><td>최대 27kg</td></tr>
-                    <tr><td>호흡량</td><td>정상</td><td>최대 30% 감소</td></tr>
-                </tbody>
-            </table>
-
-            <h2 id="section2">2. 오피스 스트레칭 3단계</h2>
-            <h3>Step 1: 턱 당기기 (Chin Tuck)</h3>
-            <p>등을 곧게 펴고 시선은 정면을 향합니다. 손가락으로 턱을 뒤로 밀어주며 뒷목 근육이 늘어나는 것을 느낍니다.</p>
-            <h3>Step 2: 흉쇄유돌근 이완</h3>
-            <p>고개를 대각선 뒤로 젖히고 반대쪽 쇄골 위를 지긋이 눌러줍니다. 목 옆 라인이 당기는 느낌에 집중하세요.</p>
-
-            <h2 id="section3">3. 생활 속 바른 자세 체크리스트</h2>
-            <div class="checklist">
-                <h4>오늘 당신의 자세는 어떠했나요?</h4>
-                <ul>
-                    <li>모니터 상단이 눈높이와 일치하는가?</li>
-                    <li>팔꿈치 각도가 90~100도를 유지하는가?</li>
-                    <li>등받이에 허리를 밀착하여 앉았는가?</li>
-                </ul>
-            </div>
-        `
+const SITUATIONS = {
+    "hangover": {
+        label: "해장이 필요할 때",
+        recommendations: [
+            { name: "콩나물국밥", reason: "아스파라긴산이 풍부해 알코올 분해를 돕고 간 기능을 회복시킵니다.", calories: 450 },
+            { name: "쌀국수", reason: "수분 보충과 함께 따뜻한 국물이 위벽을 보호하며 소화가 빠릅니다.", calories: 500 }
+        ]
     },
-    {
-        id: "blood-sugar-guide",
-        category: "Balance Meal",
-        tag: "밸런스 밀",
-        title: "업무 효율을 높이는 혈당 관리 식단 가이드",
-        summary: "오후 시간의 급격한 피로(식곤증)는 혈당 스파이크 때문입니다. 에너지를 유지하는 식사법을 공개합니다.",
-        readTime: "5분",
-        //image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
-        image: "/asset/image/main_2.jpg",
-        content: `
-            <p>고도의 집중력이 필요한 전문직 여성에게 '오후 3시의 피로'는 치명적입니다. 이는 점심 식사 후 급격히 치솟았다 떨어지는 혈당 때문일 가능성이 큽니다.</p>
-            
-            <h2 id="section1">혈당 스파이크를 막는 '거꾸로 식사법'</h2>
-            <p>식사 순서만 바꿔도 건강한 혈당 곡선을 만들 수 있습니다. 채소 - 단백질 - 탄수화물 순서로 섭취하세요.</p>
-            
-            <h3>1. 식이섬유 먼저 (채소)</h3>
-            <p>채소의 식이섬유는 장벽에 그물망을 형성하여 이후 들어오는 당분의 흡수 속도를 늦춥니다.</p>
-            <h3>2. 단백질과 지방</h3>
-            <p>생선, 고기, 계란 등 단백질은 포만감을 오래 유지해줍니다.</p>
-            <h3>3. 복합 탄수화물</h3>
-            <p>흰밥보다는 현미밥, 통밀빵 등을 가장 나중에 소량 섭취하는 것이 좋습니다.</p>
-        `
+    "date": {
+        label: "성공적인 데이트",
+        recommendations: [
+            { name: "봉골레 파스타", reason: "조개의 감칠맛과 화이트 와인의 향이 분위기를 돋우며 깔끔한 식사가 가능합니다.", calories: 600 },
+            { name: "연어 스테이크", reason: "오메가-3가 풍부해 혈행을 개선하고 피부에 윤기를 더해줍니다.", calories: 480 }
+        ]
     },
-    {
-        id: "burnout-management",
-        category: "Mind & Body",
-        tag: "마인드 셋",
-        title: "전문직 여성을 위한 번아웃 예방 및 회복 전략",
-        summary: "열정이 소진된 느낌이 든다면 이미 늦었을 수 있습니다. 멘탈 건강을 지키는 과학적 휴식법입니다.",
-        readTime: "7분",
-        image: "asset/image/main_3.jpg",
-        content: `
-            <p>번아웃은 단순한 피로가 아닙니다. 뇌의 전두엽 기능이 저하되어 의사결정 능력이 떨어지는 상태입니다. 특히 높은 책임감을 가진 3040 전문직 여성에게서 흔히 발생합니다.</p>
-            
-            <h2 id="section1">번아웃의 3가지 전조 증상</h2>
-            <ul>
-                <li><strong>냉소주의:</strong> 업무나 동료에 대해 무관심해지고 부정적인 태도를 보임.</li>
-                <li><strong>성취감 저하:</strong> 노력해도 결과가 만족스럽지 않고 자존감이 하락함.</li>
-                <li><strong>신체적 소진:</strong> 충분히 자도 피곤하고 면역력이 떨어짐.</li>
-            </ul>
-
-            <h2 id="section2">과학적 휴식법: 리스트러티브 레저</h2>
-            <p>단순히 누워있는 것이 휴식이 아닙니다. 뇌의 스위치를 끄는 '의도적인 활동'이 필요합니다.</p>
-            
-            <table>
-                <thead>
-                    <tr><th>활동 유형</th><th>효과</th><th>추천 예시</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>신체형</td><td>코르티솔 수치 저하</td><td>가벼운 산책, 요가</td></tr>
-                    <tr><td>몰입형</td><td>DMN 활성 억제</td><td>드로잉, 가드닝, 자수</td></tr>
-                </tbody>
-            </table>
-        `
+    "rainy": {
+        label: "비 오는 날",
+        recommendations: [
+            { name: "해물파전", reason: "바삭한 식감이 높은 습도에서 오는 불쾌감을 해소하고 전 부치는 소리가 빗소리와 공명합니다.", calories: 700 },
+            { name: "짬뽕", reason: "매콤한 국물이 체온을 높여주고 습한 날씨에 떨어진 입맛을 깨워줍니다.", calories: 750 }
+        ]
     },
-    {
-        id: "supplements-3040",
-        category: "Balance Meal",
-        tag: "밸런스 밀",
-        title: "3040 여성을 위한 필수 영양제 가이드: 영양학적 접근",
-        summary: "바쁜 일상에서 놓치기 쉬운 영양소, 어떤 영양제를 언제 먹는 것이 가장 효과적일까요?",
-        readTime: "6분",
-        image: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=800&q=80",
-        content: `
-            <p>영양제는 식단을 보완하는 도구입니다. 하지만 호르몬 변화가 시작되는 3040 여성에게는 전략적인 보충이 필요합니다.</p>
-            
-            <h2 id="section1">전문직 여성을 위한 Top 3 영양소</h2>
-            <h3>1. 비타민 D와 K2</h3>
-            <p>실내 업무가 많은 직장인에게 비타민 D 결핍은 흔합니다. 뼈 건강과 면역력을 위해 K2와 함께 섭취하세요.</p>
-            <h3>2. 오메가-3 (EPA/DHA)</h3>
-            <p>뇌 기능 유지와 혈행 개선에 도움을 줍니다. 고순도 rTG 형태를 추천합니다.</p>
-            <h3>3. 마그네슘</h3>
-            <p>스트레스 관리와 근육 이완, 숙면에 필수적인 미네랄입니다.</p>
-
-            <div class="checklist">
-                <h4>영양제 섭취 시 주의사항</h4>
-                <ul>
-                    <li>공복 섭취가 권장되는 영양제(유산균 등)를 확인했는가?</li>
-                    <li>지용성 비타민은 지방이 포함된 식사 후에 먹는가?</li>
-                    <li>여러 제품을 먹을 때 중복되는 성분이 없는가?</li>
-                </ul>
-            </div>
-        `
+    "solo": {
+        label: "편안한 혼밥",
+        recommendations: [
+            { name: "포케 보울", reason: "신선한 단백질과 채소를 한 그릇에 담아 영양 균형이 완벽하며 간편합니다.", calories: 550 },
+            { name: "텐동", reason: "튀김의 풍미와 밥의 조화로 오롯이 맛에만 집중할 수 있는 미식의 시간입니다.", calories: 850 }
+        ]
     }
-];
+};
 
+const MBTI_FOOD = {
+    "INTJ": { food: "코스 요리", desc: "체계적이고 완벽한 구성을 즐기는 당신에게 어울리는 고품격 미식" },
+    "ENFP": { food: "퓨전 타코", desc: "창의적이고 새로운 시도를 좋아하는 당신의 통통 튀는 매력과 닮은 맛" },
+    "ISTP": { food: "평양냉면", desc: "자극적이지 않지만 깊은 본연의 맛에 집중하는 담백한 미식가" },
+    "ESFJ": { food: "한정식", desc: "함께 나누는 정과 조화로운 구성을 소중히 여기는 따뜻한 마음의 식사" }
+};
+
+// --- Page Engine ---
 function showPage(pageId, params = {}) {
     document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
     const section = document.getElementById(pageId);
@@ -143,71 +44,44 @@ function showPage(pageId, params = {}) {
         section.classList.add('active');
         window.scrollTo(0, 0);
     }
-    if (pageId === 'home') renderHome();
-    else if (pageId === 'post' && params.postId) renderPost(params.postId);
-    else if (pageId === 'category' && params.category) renderCategory(params.category);
 }
 
-function renderHome() {
-    const grid = document.getElementById('home-grid');
-    grid.innerHTML = posts.map(post => `
-        <div class="card" onclick="showPage('post', {postId: '${post.id}'})">
-            <img src="${post.image}" class="card-img" alt="${post.title}">
-            <div class="card-content">
-                <span class="card-tag">${post.tag}</span>
-                <h3>${post.title}</h3>
-                <p>${post.summary}</p>
-            </div>
-        </div>
-    `).join('');
-}
+// --- Tool: Decision Solver ---
+function solveDecision() {
+    const hours = new Date().getHours();
+    let timeLabel = "점심";
+    if (hours < 11) timeLabel = "아침";
+    else if (hours > 17) timeLabel = "저녁";
 
-function renderPost(postId) {
-    const post = posts.find(p => p.id === postId);
-    if (!post) return;
-    const container = document.getElementById('post-container');
-    container.innerHTML = `
-        <article class="post">
-            <header class="post-header">
-                <span class="card-tag">${post.tag}</span>
-                <h1>${post.title}</h1>
-                <div class="post-meta"><span>${post.readTime} 읽기</span> • <span>2026.05.05</span></div>
-            </header>
-            <div class="post-body">${post.content}</div>
-        </article>
-        <div class="card" style="margin-top: 60px; padding: 40px; text-align: center;">
-            <h3>관련 포스트 더보기</h3>
-            <div class="grid" style="margin-top: 30px;">
-                ${posts.filter(p => p.id !== postId).slice(0, 2).map(p => `
-                    <div class="card" onclick="showPage('post', {postId: '${p.id}'})">
-                        <div class="card-content" style="padding: 15px;">
-                            <span class="card-tag">${p.tag}</span>
-                            <h4 style="font-size: 16px;">${p.title}</h4>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-            <button class="generate-btn" style="max-width: 200px; margin-top: 30px;" onclick="showPage('home')">홈으로 이동</button>
+    const keys = Object.keys(SITUATIONS);
+    const randomSitu = SITUATIONS[keys[Math.floor(Math.random() * keys.length)]];
+    const meal = randomSitu.recommendations[Math.floor(Math.random() * randomSitu.recommendations.length)];
+
+    const resultArea = document.getElementById('recommend-result');
+    resultArea.innerHTML = `
+        <div class="result-card pulse">
+            <span class="badge">${timeLabel} 추천</span>
+            <h3>오늘의 메뉴: ${meal.name}</h3>
+            <p><strong>이유:</strong> ${meal.reason}</p>
+            <div class="calorie-tag">대략 ${meal.calories} kcal</div>
         </div>
     `;
 }
 
-function renderCategory(categoryName) {
-    const filteredPosts = posts.filter(p => p.category === categoryName);
-    const grid = document.getElementById('category-grid');
-    document.getElementById('category-title').innerText = categoryName;
-    grid.innerHTML = filteredPosts.map(post => `
-        <div class="card" onclick="showPage('post', {postId: '${post.id}'})">
-            <img src="${post.image}" class="card-img" alt="${post.title}">
-            <div class="card-content">
-                <span class="card-tag">${post.tag}</span>
-                <h3>${post.title}</h3>
-                <p>${post.summary}</p>
-            </div>
+// --- Tool: MBTI Compatibility ---
+function checkMBTI() {
+    const mbti = document.getElementById('mbti-input').value.toUpperCase();
+    const result = MBTI_FOOD[mbti] || { food: "비빔밥", desc: "모든 성향을 아우르는 완벽한 조화의 맛" };
+    
+    document.getElementById('mbti-result').innerHTML = `
+        <div class="result-card gold">
+            <h3>${mbti}의 소울푸드: ${result.food}</h3>
+            <p>${result.desc}</p>
         </div>
-    `).join('');
+    `;
 }
 
+// --- UI Interaction ---
 function toggleTheme() {
     const body = document.body;
     const isDark = body.getAttribute('data-theme') === 'dark';
@@ -218,5 +92,4 @@ function toggleTheme() {
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) document.body.setAttribute('data-theme', savedTheme);
-    renderHome();
 });
