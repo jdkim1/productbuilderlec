@@ -1,17 +1,3 @@
-// Check for saved user preference, if any, on load
-const currentTheme = localStorage.getItem('theme');
-const themeLabel = document.getElementById('theme-label');
-const themeCheckbox = document.getElementById('checkbox');
-
-if (currentTheme) {
-    document.body.setAttribute('data-theme', currentTheme); 
-
-    if (currentTheme === 'dark') {
-        if (themeCheckbox) themeCheckbox.checked = true;
-        if (themeLabel) themeLabel.innerText = 'Dark Mode';
-    }
-}
-
 function toggleTheme(checkbox) {
     const body = document.body;
     const themeLabel = document.getElementById('theme-label');
@@ -27,9 +13,24 @@ function toggleTheme(checkbox) {
     }
 }
 
+// Initial theme setup
+document.addEventListener('DOMContentLoaded', () => {
+    const currentTheme = localStorage.getItem('theme');
+    const themeLabel = document.getElementById('theme-label');
+    const themeCheckbox = document.getElementById('checkbox');
+
+    if (currentTheme) {
+        document.body.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            if (themeCheckbox) themeCheckbox.checked = true;
+            if (themeLabel) themeLabel.innerText = 'Dark Mode';
+        }
+    }
+});
+
 function generateLotto() {
     const resultsContainer = document.getElementById('lotto-results');
-    resultsContainer.innerHTML = ''; // Clear previous results
+    resultsContainer.innerHTML = ''; 
 
     for (let i = 0; i < 5; i++) {
         const numbers = [];
@@ -46,8 +47,7 @@ function generateLotto() {
         
         const label = document.createElement('span');
         label.className = 'set-label';
-        label.innerText = `Set ${i + 1}: `;
-        label.style.minWidth = '60px';
+        label.innerText = `번호 ${i + 1}: `;
         row.appendChild(label);
 
         numbers.forEach(num => {
@@ -55,7 +55,6 @@ function generateLotto() {
             ball.className = 'lotto-ball';
             ball.innerText = num;
             
-            // Optional: Color balls based on number ranges
             if (num <= 10) ball.style.backgroundColor = '#f1c40f';
             else if (num <= 20) ball.style.backgroundColor = '#3498db';
             else if (num <= 30) ball.style.backgroundColor = '#e74c3c';
@@ -67,4 +66,13 @@ function generateLotto() {
 
         resultsContainer.appendChild(row);
     }
+}
+
+// Simple page navigation
+function showPage(pageId) {
+    document.querySelectorAll('.page-content').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.getElementById(pageId).classList.add('active');
+    window.scrollTo(0, 0);
 }
