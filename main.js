@@ -13,7 +13,6 @@ function toggleTheme(checkbox) {
     }
 }
 
-// Initial theme setup
 document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = localStorage.getItem('theme');
     const themeLabel = document.getElementById('theme-label');
@@ -28,47 +27,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function generateLotto() {
-    const resultsContainer = document.getElementById('lotto-results');
+const mealData = {
+    breakfast: ["전복죽", "계란 토스트", "요거트 볼", "사과와 견과류", "샌드위치", "순두부찌개", "시리얼", "바나나 팬케이크", "누룽지", "스크램블 에그"],
+    lunch: ["김치찌개", "제육볶음", "돈가스", "비빔밥", "파스타", "쌀국수", "초밥", "햄버거", "된장찌개", "짜장면"],
+    dinner: ["삼겹살", "스테이크", "치킨", "보쌈", "연어 스테이크", "곱창", "떡볶이와 튀김", "해물파전", "찜닭", "부대찌개"],
+    snack: ["아메리카노", "조각 케이크", "과일 화채", "호떡", "떡볶이", "감자튀김", "쿠키", "빙수", "단백질 바", "고구마"]
+};
+
+function generateMeals() {
+    const resultsContainer = document.getElementById('meal-results');
     resultsContainer.innerHTML = ''; 
 
-    for (let i = 0; i < 5; i++) {
-        const numbers = [];
-        while (numbers.length < 6) {
-            const num = Math.floor(Math.random() * 45) + 1;
-            if (!numbers.includes(num)) {
-                numbers.push(num);
-            }
-        }
-        numbers.sort((a, b) => a - b);
+    const categories = [
+        { id: 'breakfast', label: '아침' },
+        { id: 'lunch', label: '점심' },
+        { id: 'dinner', label: '저녁' },
+        { id: 'snack', label: '간식/디저트' }
+    ];
 
-        const row = document.createElement('div');
-        row.className = 'lotto-row';
-        
-        const label = document.createElement('span');
-        label.className = 'set-label';
-        label.innerText = `번호 ${i + 1}: `;
-        row.appendChild(label);
+    categories.forEach(cat => {
+        const randomIndex = Math.floor(Math.random() * mealData[cat.id].length);
+        const selectedMeal = mealData[cat.id][randomIndex];
 
-        numbers.forEach(num => {
-            const ball = document.createElement('div');
-            ball.className = 'lotto-ball';
-            ball.innerText = num;
-            
-            if (num <= 10) ball.style.backgroundColor = '#f1c40f';
-            else if (num <= 20) ball.style.backgroundColor = '#3498db';
-            else if (num <= 30) ball.style.backgroundColor = '#e74c3c';
-            else if (num <= 40) ball.style.backgroundColor = '#95a5a6';
-            else ball.style.backgroundColor = '#2ecc71';
-            
-            row.appendChild(ball);
-        });
-
-        resultsContainer.appendChild(row);
-    }
+        const card = document.createElement('div');
+        card.className = 'meal-row';
+        card.innerHTML = `
+            <span class="meal-label">${cat.label}</span>
+            <span class="meal-name">${selectedMeal}</span>
+        `;
+        resultsContainer.appendChild(card);
+    });
 }
 
-// Simple page navigation
 function showPage(pageId) {
     document.querySelectorAll('.page-content').forEach(page => {
         page.classList.remove('active');

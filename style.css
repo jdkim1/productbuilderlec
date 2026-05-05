@@ -143,18 +143,34 @@ ul.info-list li { margin-bottom: 10px; line-height: 1.5; }
     border: none; border-radius: 4px; cursor: pointer;
     width: 100%; margin-bottom: 24px;
 }
-
-.lotto-row {
-    display: flex; gap: 10px; align-items: center; justify-content: center;
-    flex-wrap: wrap; padding: 12px 0; border-bottom: 1px solid var(--container-border);
+.meal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: var(--hover-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
 }
 
-.lotto-ball {
-    width: 36px; height: 36px; border-radius: 50%; display: flex;
-    align-items: center; justify-content: center; font-weight: 500;
-    color: #fff; font-size: 14px;
+.meal-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5f6368;
 }
 
+[data-theme="dark"] .meal-label {
+    color: #9aa0a6;
+}
+
+.meal-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+.generate-btn {
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
 .form-group input, .form-group textarea {
