@@ -144,69 +144,66 @@ ul.info-list li { margin-bottom: 10px; line-height: 1.5; }
     width: 100%; margin-bottom: 24px;
 }
 .meal-row.clickable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    background-color: var(--hover-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .meal-row.clickable:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+    box-shadow: var(--shadow);
 }
 
-.view-detail {
-    font-size: 12px;
-    color: #5f6368;
-}
-
-/* Detail Page Styles */
-.detail-header {
-    margin-bottom: 24px;
-}
-
-.back-btn {
-    background: none;
-    border: none;
-    color: var(--accent-color);
-    cursor: pointer;
-    font-size: 14px;
-    padding: 0;
-    margin-bottom: 16px;
-}
-
-.meal-img {
-    width: 100%;
-    height: 300px;
-    object-fit: crop;
-    border-radius: 8px;
-    margin-bottom: 24px;
-    border: 1px solid var(--container-border);
-}
-
-.detail-section {
-    margin-bottom: 32px;
+.meal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     text-align: left;
 }
 
-.detail-section h3 {
+.meal-label {
+    font-size: 12px;
+    color: #5f6368;
+    font-weight: 500;
+}
+
+.meal-name {
     font-size: 18px;
-    margin-bottom: 12px;
+    font-weight: 500;
     color: var(--accent-color);
-    border-bottom: 1px solid var(--container-border);
-    padding-bottom: 8px;
 }
 
-.map-container {
-    width: 100%;
-    height: 350px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--container-border);
+.meal-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+.recipe-hint {
+    font-size: 12px;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.view-detail {
+    font-size: 14px;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Detail Page Styles */
+.detail-recipe-text {
+    line-height: 1.8 !important;
+    white-space: pre-wrap;
 }
 
 .generate-btn {
