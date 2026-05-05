@@ -4,7 +4,7 @@ const themeLabel = document.getElementById('theme-label');
 const themeCheckbox = document.getElementById('checkbox');
 
 if (currentTheme) {
-    document.body.setAttribute('data-theme', currentTheme);
+    document.body.setAttribute('data-theme', currentTheme); 
 
     if (currentTheme === 'dark') {
         if (themeCheckbox) themeCheckbox.checked = true;
